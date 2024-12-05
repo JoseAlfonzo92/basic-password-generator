@@ -1,0 +1,480 @@
+:root {
+    --primary-dark-blue: hsl(220, 50%, 20%);
+    --accent-light-blue: hsl(220, 70%, 60%);
+    --accent-vibrant-green: hsl(120, 60%, 50%);
+    --background-white: hsl(0, 0%, 100%);
+    --background-light-gray: hsl(0, 0%, 90%);
+    --text-dark-gray: hsl(0, 0%, 30%);
+    --primary-color: var(--accent-light-blue);
+    --primary-hover: var(--accent-vibrant-green);
+    --container-bg: var(--background-white);
+    --background-color: var(--background-light-gray);
+    --text-color: var(--text-dark-gray);
+    --input-bg: var(--background-white);
+    --input-border: var(--text-dark-gray);
+    --shadow: rgba(0, 0, 0, 0.1);
+    --progress-bg: var(--background-light-gray);
+    --progress-fill: var(--accent-light-blue);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    background-color: var(--background-color);
+}
+
+main{
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container {
+    background-color: var(--container-bg);
+    padding: 12px 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px var(--shadow);
+    width: 620px;
+    height: 600px;
+    text-align: left;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+
+/* label for select language */
+select#language {
+    color: var(--accent-light-blue);
+    background-color: var(--background-white);
+    box-shadow: 2px 4px 5px 2px rgba(0, 0, 0, 0.1);
+    border-style: none;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+select#language:hover{
+
+box-shadow: 2px 4px 5px 2px rgba(0, 0, 0, 0.2);
+transition: ease-in-out 10ms;
+}
+
+/* label, setting and strength */
+
+.translator, .settings, .output, .strength {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.translator label, .strength label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+
+
+/* label for checkbox */
+.options label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: var(--accent-light-blue);
+    cursor: pointer;
+}
+
+
+
+/* checkbox */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color:var(--accent-light-blue);
+    cursor: pointer;
+}
+
+.options input[type="checkbox"] {
+    appearance: none; 
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent-light-blue, #00aaff);
+    border-radius: 6px;
+    margin-right: 12px;
+    background-color: var(--background-white, #fff);
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.options input[type="checkbox"]::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 10px;
+    box-shadow: 2px 4px 5px 2px rgba(0, 0, 0, 0.1);
+    border: solid var(--accent-light-blue, #00aaff);
+    border-width: 0 2px 2px 0;
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    transition: transform 0.3s ease;
+}
+
+.options input[type="checkbox"]:checked {
+    background-color: var(--accent-light-blue, #00aaff);
+    border-color: var(--accent-light-blue, #00aaff);
+}
+
+.options input[type="checkbox"]:checked::before {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+    border-color: #fff;
+}
+
+
+.options input[type="checkbox"]:hover {
+    box-shadow: 2px 4px 5px 2px rgba(0, 0, 0, 0.1);
+    transition: ease-in-out 10ms;
+}
+
+
+/* generate password button */
+button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+    padding: 12px;
+    color: var(--accent-light-blue);
+    background-color: var(--background-white);
+    box-shadow: 2px 4px 5px 2px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 10px var(--shadow);
+}
+
+button:hover {
+    box-shadow: 2px 4px 5px 2px rgba(0, 0, 0, 0.2);
+    transition: ease-in-out 10ms;
+}
+
+
+
+/* password strength slider */
+#password-length {
+    width: 76%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    -webkit-appearance: none; 
+    appearance: none;
+    height: 16px;
+    background: linear-gradient(to right, var(--background-white),var(--background-light-gray));
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), 
+                inset -2px -2px 5px rgba(255, 255, 255, 0.7);
+    outline: none;
+}
+
+#password-length::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(to bottom, var(--accent-light-blue),var(--background-light-gray));
+    border-radius: 50%;
+    border: 2px thin #999;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 
+                inset 1px 1px 3px rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#password-length::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3), 
+                inset 2px 2px 5px rgba(255, 255, 255, 0.6);
+}
+
+#password-length::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(to bottom, #f0f0f0, #cccccc);
+    border-radius: 50%;
+    border: 2px solid #999;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 
+                inset 1px 1px 3px rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#password-length::-moz-range-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3), 
+                inset 2px 2px 5px rgba(255, 255, 255, 0.6);
+}
+
+
+
+
+
+/* generated password field */
+#password {
+    width: calc(92% - 60px);
+    padding: 10px;
+    border: 1px thin var(--input-border);
+    border-radius: 8px;
+    color: var(--accent-light-blue);
+    background-color: var(--background-white);
+    box-shadow: 2px 4px 5px 2px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+}
+
+
+#password:hover{
+    box-shadow: 2px 4px 5px 2px rgba(0, 0, 0, 0.2);
+    transition: ease-in-out 10ms;
+}
+
+#password:focus {
+    outline: 2px solid var(--primary-color);
+}
+
+
+/* copy button */
+
+#copy {
+    width: 100px;
+    padding: 10px;
+    margin-left: 2px;
+    color: var(--accent-light-blue);
+    background-color: var(--background-white);
+    box-shadow: 2px 4px 5px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#copy:hover {
+    box-shadow: 2px 4px 5px 2px rgba(0, 0, 0, 0.2);
+    transition: ease-in-out 10ms;
+}
+
+
+
+/* 3D Security Level Bar */
+progress {
+    width: 100%;
+    height: 14px;
+    border-radius: 10px;
+    background-color: var(--progress-bg, #e0e0e0); 
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(255, 255, 255, 0.2); 
+    overflow: hidden;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+progress::-webkit-progress-bar {
+    background-color: var(--progress-bg, #e0e0e0); 
+    border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+    background: linear-gradient(135deg, var(--progress-fill, red) 90%, var(--progress-fill-dark) 100%);
+    border-radius: 10px;
+    box-shadow: inset 0px 2px 5px rgba(255, 255, 255, 0.2), 0px 1px 2px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Fallback for Firefox */
+progress::-moz-progress-bar {
+    background: linear-gradient(135deg, var(--progress-fill, red) 0%, var(--progress-fill-dark) 100%);
+    border-radius: 10px;
+    box-shadow: inset 0px 2px 5px rgba(255, 255, 255, 0.2), 0px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* smooth color transitions for different security levels */
+:root {
+    --progress-bg: #e0e0e0;
+    --progress-fill: red;       
+    --progress-fill-dark: rgb(243, 229, 229); 
+}
+
+[data-security="low"] progress::-webkit-progress-value,
+[data-security="low"] progress::-moz-progress-bar {
+    --progress-fill: red;
+    --progress-fill-dark: darkred;
+}
+
+[data-security="medium"] progress::-webkit-progress-value,
+[data-security="medium"] progress::-moz-progress-bar {
+    --progress-fill: gold;
+    --progress-fill-dark: goldenrod;
+}
+
+[data-security="high"] progress::-webkit-progress-value,
+[data-security="high"] progress::-moz-progress-bar {
+    --progress-fill: limegreen;
+    --progress-fill-dark: darkgreen;
+}
+
+[data-security="max"] progress::-webkit-progress-value,
+[data-security="max"] progress::-moz-progress-bar {
+    --progress-fill: royalblue;
+    --progress-fill-dark: navy;
+}
+
+
+
+
+/* Base Toast Styles */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 250px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--accent-light-blue);
+    box-shadow: 2px 4px 5px 2px rgba(0, 0, 0, 0.2);
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Show the toast message */
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+
+
+/* footer */
+#developer-text {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: var(--accent-light-blue);
+}
+
+#developer-text p {
+    margin: 0;
+}
+
+
+
+
+
+
+
+
+
+/* Small devices (up to 480px) */
+@media (max-width: 480px) {
+
+    
+    .container {
+        width: 90%;
+        padding: 15px;
+        text-align: center;
+    
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    #password {
+        width: calc(100% - 60px);
+        font-size: 0.8rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    #password-length {
+        margin-top: 5px;
+    }
+
+    .options label {
+        font-size: 0.8rem;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* Medium devices (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .container {
+        width: 80%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    #password {
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .options label {
+        font-size: 0.85rem;
+        display: flex;
+        justify-content: center;
+    }
+
+
+    /* footer */
+    #developer-text {
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: var(--accent-light-blue);
+    }
+
+    #developer-text p {
+    margin: 0;
+    }
+
+    
+}
+
+
