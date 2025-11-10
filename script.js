@@ -1,87 +1,91 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const charCount = document.getElementById('charCount');
-    const passwordLength = document.getElementById('password-length');
-    const languageSelector = document.getElementById('language');
-    const uppercaseCheckbox = document.getElementById('uppercase');
-    const lowercaseCheckbox = document.getElementById('lowercase');
-    const numbersCheckbox = document.getElementById('numbers');
-    const symbolsCheckbox = document.getElementById('symbols');
-    const generateBtn = document.getElementById('generate');
-    const passwordField = document.getElementById('password');
-    const copyBtn = document.getElementById('copy');
-    const strengthBar = document.getElementById('strength-bar');
-    const developerText = document.getElementById('developer-text');
+ document.addEventListener('DOMContentLoaded', () => {
+      const charCount = document.getElementById('charCount');
+      const passwordLength = document.getElementById('password-length');
+      const languageSelector = document.getElementById('language');
+      const uppercaseCheckbox = document.getElementById('uppercase');
+      const lowercaseCheckbox = document.getElementById('lowercase');
+      const numbersCheckbox = document.getElementById('numbers');
+      const symbolsCheckbox = document.getElementById('symbols');
+      const generateBtn = document.getElementById('generate');
+      const passwordField = document.getElementById('password');
+      const copyBtn = document.getElementById('copy');
+      const strengthBar = document.getElementById('strength-bar');
+      const developerText = document.getElementById('developer-text');
 
-    const translations = {
-        en: {
-            title: "Password Generator",
-            translate: "Translate:",
-            passwordLength: "Password Length:",
-            uppercase: "Uppercase",
-            lowercase: "Lowercase",
-            numbers: "Numbers",
-            symbols: "Symbols",
-            generate: "Generate Password",
-            copy: "Copy",
-            strength: "Security Level:",
-            copiedToClipboard: "Password copied to clipboard!",
-            copyFailed: "Failed to copy the password.",
-            selectOption: "Please select at least one option.",
-            passwordGenerated: "Password generated successfully!",
-            developerText: "Developed by José Alfonzo",
-        },
-        es: {
-            title: "Generador de Contraseñas",
-            translate: "Traducir:",
-            passwordLength: "Longitud de la Contraseña:",
-            uppercase: "Mayúsculas",
-            lowercase: "Minúsculas",
-            numbers: "Números",
-            symbols: "Símbolos",
-            generate: "Generar Contraseña",
-            copy: "Copiar",
-            strength: "Nivel de Seguridad:",
-            copiedToClipboard: "¡Contraseña copiada al portapapeles!",
-            copyFailed: "Error al copiar la contraseña.",
-            selectOption: "Seleccione al menos una opción.",
-            passwordGenerated: "¡Contraseña generada con éxito!",
-            developerText: "Desarrollado por José Alfonzo", 
-        }
-    };
+      const translations = {
+  en: {
+    title: "Password Generator",
+    translate: "Translate",
+    passwordLength: "Password Length:",
+    uppercase: "Uppercase",
+    lowercase: "Lowercase",
+    numbers: "Numbers",
+    symbols: "Symbols",
+    generate: "Generate Password",
+    copy: "Copy",
+    strength: "Security Level:",
+    copiedToClipboard: "Password copied to clipboard!",
+    copyFailed: "Failed to copy the password.",
+    selectOption: "Please select at least one option.",
+    passwordGenerated: "Password generated successfully!",
+    developerText: `Developed by <a href="https://github.com/JoseAlfonzo92" target="_blank" rel="noopener noreferrer">
+      José Alfonzo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`,
+  },
+  es: {
+    title: "Generador de Contraseñas",
+    translate: "Traducir",
+    passwordLength: "Longitud de la Contraseña:",
+    uppercase: "Mayúsculas",
+    lowercase: "Minúsculas",
+    numbers: "Números",
+    symbols: "Símbolos",
+    generate: "Generar Contraseña",
+    copy: "Copiar",
+    strength: "Nivel de Seguridad:",
+    copiedToClipboard: "¡Contraseña copiada al portapapeles!",
+    copyFailed: "Error al copiar la contraseña.",
+    selectOption: "Seleccione al menos una opción.",
+    passwordGenerated: "¡Contraseña generada con éxito!",
+    developerText: `Desarrollado por <a href="https://github.com/JoseAlfonzo92" target="_blank" rel="noopener noreferrer">
+      José Alfonzo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`,
+  }
+};
 
-    function detectSystemLanguage() {
+
+      function detectSystemLanguage() {
         const userLang = navigator.language || navigator.userLanguage;
         return userLang.startsWith('es') ? 'es' : 'en';
-    }
+      }
 
-    function translatePage(lang) {
-        const texts = translations[lang];
-        document.getElementById('title').textContent = texts.title;
-        document.querySelector('label[for="language"]').textContent = texts.translate;
-        document.querySelector('label[for="password-length"]').childNodes[0].textContent = texts.passwordLength;
-        uppercaseCheckbox.nextSibling.textContent = texts.uppercase;
-        lowercaseCheckbox.nextSibling.textContent = texts.lowercase;
-        numbersCheckbox.nextSibling.textContent = texts.numbers;
-        symbolsCheckbox.nextSibling.textContent = texts.symbols;
-        generateBtn.textContent = texts.generate;
-        copyBtn.textContent = texts.copy;
-        document.querySelector('label[for="strength-bar"]').textContent = texts.strength;
-        developerText.textContent = texts.developerText; // Update developer text
-    }
+      function translatePage(lang) {
+        const t = translations[lang];
+        document.getElementById('title').textContent = t.title;
+        document.querySelector('label[for="language"]').textContent = t.translate;
+        document.querySelector('label[for="password-length"]').childNodes[0].textContent = t.passwordLength;
+        uppercaseCheckbox.parentNode.childNodes[1].textContent = ' ' + t.uppercase;
+        lowercaseCheckbox.parentNode.childNodes[1].textContent = ' ' + t.lowercase;
+        numbersCheckbox.parentNode.childNodes[1].textContent = ' ' + t.numbers;
+        symbolsCheckbox.parentNode.childNodes[1].textContent = ' ' + t.symbols;
+        generateBtn.innerHTML = `${t.generate} <i class="fa-solid fa-plus"></i>`;
+        copyBtn.innerHTML = `${t.copy} <i class="fa-solid fa-copy"></i>`;
+        document.querySelector('label[for="strength-bar"]').textContent = t.strength;
+        developerText.innerHTML = t.developerText; // Use innerHTML to keep <a> tag clickable
+      }
 
-    const systemLanguage = detectSystemLanguage();
-    languageSelector.value = systemLanguage;
-    translatePage(systemLanguage);
+      // Set system language
+      const systemLang = detectSystemLanguage();
+      languageSelector.value = systemLang;
+      translatePage(systemLang);
 
-    languageSelector.addEventListener('change', () => {
+      languageSelector.addEventListener('change', () => {
         translatePage(languageSelector.value);
-    });
+      });
 
-    passwordLength.addEventListener('input', () => {
+      passwordLength.addEventListener('input', () => {
         charCount.textContent = passwordLength.value;
-    });
+      });
 
-    function generatePassword() {
+      function generatePassword() {
         const length = parseInt(passwordLength.value);
         const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         const lowercase = 'abcdefghijklmnopqrstuvwxyz';
@@ -94,149 +98,119 @@ document.addEventListener('DOMContentLoaded', () => {
         if (numbersCheckbox.checked) allowedChars += numbers;
         if (symbolsCheckbox.checked) allowedChars += symbols;
 
+        if (!allowedChars) {
+          showToast('selectOption');
+          return;
+        }
+
         let password = '';
         for (let i = 0; i < length; i++) {
-            password += allowedChars.charAt(Math.floor(Math.random() * allowedChars.length));
+          password += allowedChars.charAt(Math.floor(Math.random() * allowedChars.length));
         }
 
         passwordField.value = password;
         ratePasswordStrength(password);
-    }
+        showToast('passwordGenerated');
+      }
 
     function ratePasswordStrength(password) {
-        let score = 0;
-        if (password.length >= 8) score += 20;
-        if (/[A-Z]/.test(password)) score += 20;
-        if (/[a-z]/.test(password)) score += 20;
-        if (/[0-9]/.test(password)) score += 20;
-        if (/[!@#$%^&*()_+]/.test(password)) score += 20;
-    
-        strengthBar.value = score;
-    
-        // Update the progress bar color based on the score
-        let color;
-        if (score <= 20) {
-            color = "red"; // Weak
-        } else if (score <= 40) {
-            color = "orange"; // Moderate
-        } else if (score <= 60) {
-            color = "yellow"; // Good
-        } else if (score <= 80) {
-            color = "green"; // Strong
-        } else {
-            color = "blue"; // Very strong
+  const strengthBar = document.getElementById('strength-bar');
+  const strengthLabel = document.getElementById('strength-label');
+
+  let score = 0;
+  if (password.length >= 8) score += 20;
+  if (/[A-Z]/.test(password)) score += 20;
+  if (/[a-z]/.test(password)) score += 20;
+  if (/[0-9]/.test(password)) score += 20;
+  if (/[!@#$%^&*()_+]/.test(password)) score += 20;
+
+  // Update bar width
+  strengthBar.style.width = `${score}%`;
+
+  // Determine color and label text
+  let color = "red";
+  let label = "Very Weak";
+
+  if (score <= 20) {
+    color = "#e74c3c"; // red
+    label = "Very Weak";
+  } else if (score <= 40) {
+    color = "#e67e22"; // orange
+    label = "Weak";
+  } else if (score <= 60) {
+    color = "#f1c40f"; // yellow
+    label = "Moderate";
+  } else if (score <= 80) {
+    color = "#2ecc71"; // green
+    label = "Strong";
+  } else {
+    color = "#3498db"; // blue
+    label = "Very Strong";
+  }
+
+  // Apply color and label
+  strengthBar.style.background = color;
+  strengthLabel.textContent = label;
+}
+
+
+      generateBtn.addEventListener('click', generatePassword);
+
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(passwordField.value);
+          showToast('copiedToClipboard');
+        } catch {
+          showToast('copyFailed');
         }
-    
-        // Apply the color to the progress bar
-        document.documentElement.style.setProperty('--progress-fill', color);
-    }
-    
+      });
 
-    generateBtn.addEventListener('click', generatePassword);
-
-copyBtn.addEventListener('click', async () => {
-    if (generateBtn.disabled) {
-        showToast("selectOption"); 
-        // Show warning if no options are selected
-        return;
-    }
-    try {
-        await navigator.clipboard.writeText(passwordField.value);
-        showToast("copiedToClipboard"); 
-        // Show success message
-    } catch (err) {
-        console.error("Failed to copy: ", err);
-        showToast("copyFailed"); 
-        // Show failure message
-    }
-});
-
-    
-    
-    // Function to show the toast message
-    function showToast(messageKey) {
+      function showToast(messageKey) {
         const toast = document.getElementById('toast');
         const currentLang = languageSelector.value;
-        // Get the message from translations
-        toast.textContent = translations[currentLang][messageKey];  
-        // Add the 'show' class to make it visible
-        toast.className = 'toast show';  
-    
-        // Hide the toast after 3 seconds
-        setTimeout(() => {
-            // Remove the 'show' class
-            toast.className = toast.className.replace('show', '');  
-        }, 3000);
+        toast.textContent = translations[currentLang][messageKey];
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3000);
+      }
+    });
+
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+  const themeToggle = document.getElementById("theme-toggle");
+  const userPref = localStorage.getItem("theme");
+  const systemPrefDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  // Set initial theme based on user or system
+  if (userPref) {
+    document.documentElement.setAttribute("data-theme", userPref);
+  } else if (systemPrefDark) {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+
+  // Update icon on load
+  updateThemeIcon();
+
+  // Toggle theme on click
+  themeToggle.addEventListener("click", () => {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+    updateThemeIcon();
+  });
+
+  function updateThemeIcon() {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const icon = themeToggle.querySelector("i");
+
+    if (currentTheme === "dark") {
+      icon.classList.replace("fa-moon", "fa-sun");
+    } else {
+      icon.classList.replace("fa-sun", "fa-moon");
     }
-    
-
-    
-    
+  }
 });
-
-
-
-
-// For the translate label 
-const languageSelector = document.getElementById('language');
-
-const languageOptions = {
-    en: { en: 'English', es: 'Spanish' },
-    es: { en: 'Inglés', es: 'Español' }
-};
-
-function updateLanguageOptions(lang) {
-    const options = languageOptions[lang];
-    languageSelector.options[0].textContent = options.en;
-    languageSelector.options[1].textContent = options.es;
-}
-
-// Update language options on change
-languageSelector.addEventListener('change', () => {
-    const selectedLang = languageSelector.value;
-    updateLanguageOptions(selectedLang);
-});
-
-// Set the initial language options based on system or default to English
-document.addEventListener('DOMContentLoaded', () => {
-    const systemLang = navigator.language.startsWith('es') ? 'es' : 'en';
-    languageSelector.value = systemLang;
-    updateLanguageOptions(systemLang);
-});
-
-
-
-
-
-/* function to disable buttons on default */
-const checkboxes = document.querySelectorAll('.options input[type="checkbox"]');
-const generateBtn = document.getElementById('generateBtn');
-const copyBtn = document.getElementById('copyBtn');
-const passwordLength = document.getElementById('password-length');
-const charCount = document.getElementById('charCount');
-
-// Function to enable/disable buttons based on checkboxes
-function updateButtonState() {
-    const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-    generateBtn.disabled = !isChecked;
-    copyBtn.disabled = !isChecked;
-}
-
-// Function to update password length display
-passwordLength.addEventListener('input', () => {
-    charCount.textContent = passwordLength.value;
-});
-
-// Event listeners for checkboxes
-checkboxes.forEach(checkbox => {
-    // Uncheck all by default
-    checkbox.checked = false;  
-    checkbox.addEventListener('change', updateButtonState);
-});
-
-// Initial button state
-updateButtonState();
-
-
-
-

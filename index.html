@@ -13,57 +13,69 @@
 
 
     <!-- font awesome icons -->
-     <!-- for a future update -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <main>
-        <div class="container">
-            <h1 id="title">Password Generator</h1>
-            
-            <div class="translator">
-                <label for="language">Translate:</label>
-                <select id="language">
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                </select>
-            </div>
-            
-            <div class="settings">
-                <label for="password-length">Password Length: <span id="charCount">12</span></label>
-                <input type="range" id="password-length" min="4" max="32" value="12">
-                
-                <div class="options">
-                    <label><input type="checkbox" id="uppercase" checked> Uppercase</label>
-                    <label><input type="checkbox" id="lowercase" checked> Lowercase</label>
-                    <label><input type="checkbox" id="numbers" checked> Numbers</label>
-                    <label><input type="checkbox" id="symbols" checked> Symbols</label>
-                </div>
-            </div>
-            
-            <button id="generate">Generate Password</button>
-            
-            <div class="output">
-                <input type="text" id="password" readonly>
-                <button id="copy">Copy</button>
-            </div>
-            
-            <div class="strength">
-                <label for="strength-bar">Security Level:</label>
-                <progress id="strength-bar" max="100" value="0"></progress>
-            </div>
-        </div>
-    
-        
-    <div id="toast" class="toast">Password copied to clipboard!</div>
-    </main>
-    <footer>
-        <p id="developer-text">Developed by José Alfonzo</p>
-    </footer>
-    
+   <main>
+    <div class="container">
+      <h1 id="title">Password Generator</h1>
+      <button id="theme-toggle" aria-label="Toggle theme">
+  <i class="fa-solid fa-moon"></i> 
+</button>
 
-    
+      <div class="translator">
+        <label for="language">Translate</label>
+        <select id="language">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+      </div>
+
+      <div class="settings">
+        <label for="password-length">Password Length: <span id="charCount">12</span></label>
+        <input type="range" id="password-length" min="4" max="32" value="12">
+
+        <div class="options">
+          <label><input type="checkbox" id="uppercase" checked> Uppercase</label>
+          <label><input type="checkbox" id="lowercase" checked> Lowercase</label>
+          <label><input type="checkbox" id="numbers" checked> Numbers</label>
+          <label><input type="checkbox" id="symbols" checked> Symbols</label>
+        </div>
+      </div>
+
+      <div class="wrapper">
+<button id="generate">Generate Password <i class="fa-solid fa-plus"></i></button>
+
+      <div class="output">
+        <input type="text" id="password" readonly>
+        <button id="copy">Copy <i class="fa-solid fa-copy"></i></button>
+      </div>
+      </div>
+      
+
+      <div class="strength">
+  <label for="strength-bar">Security Level:</label>
+  <div class="strength-wrapper">
+    <div id="strength-bar" class="bar"></div>
+    <span id="strength-label">Very Weak</span>
+  </div>
+</div>
+
+    </div>
+    <div id="toast" class="toast">Password copied to clipboard!</div>
+  </main>
+
+ <footer>
+  <p id="developer-text">
+    Developed by
+    <a href="https://github.com/JoseAlfonzo92" target="_blank" rel="noopener noreferrer">
+      José Alfonzo
+      <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+  </p>
+</footer>
+
+
     <script src="script.js"></script>
-    
 </body>
 </html>
