@@ -15,7 +15,7 @@
       const translations = {
   en: {
     title: "Password Generator",
-    translate: "Translate",
+    translate: "Language",
     passwordLength: "Password Length:",
     uppercase: "Uppercase",
     lowercase: "Lowercase",
@@ -23,7 +23,7 @@
     symbols: "Symbols",
     generate: "Generate Password",
     copy: "Copy",
-    strength: "Security Level:",
+    strength: "Security Level ",
     copiedToClipboard: "Password copied to clipboard!",
     copyFailed: "Failed to copy the password.",
     selectOption: "Please select at least one option.",
@@ -33,7 +33,7 @@
   },
   es: {
     title: "Generador de Contraseñas",
-    translate: "Traducir",
+    translate: "Idioma",
     passwordLength: "Longitud de la Contraseña:",
     uppercase: "Mayúsculas",
     lowercase: "Minúsculas",
@@ -41,7 +41,7 @@
     symbols: "Símbolos",
     generate: "Generar Contraseña",
     copy: "Copiar",
-    strength: "Nivel de Seguridad:",
+    strength: "Nivel de Seguridad ",
     copiedToClipboard: "¡Contraseña copiada al portapapeles!",
     copyFailed: "Error al copiar la contraseña.",
     selectOption: "Seleccione al menos una opción.",
@@ -72,7 +72,7 @@
         developerText.innerHTML = t.developerText; // Use innerHTML to keep <a> tag clickable
       }
 
-      // Set system language
+      // System language
       const systemLang = detectSystemLanguage();
       languageSelector.value = systemLang;
       translatePage(systemLang);
@@ -127,7 +127,7 @@
   // Update bar width
   strengthBar.style.width = `${score}%`;
 
-  // Determine color and label text
+  // Color and label text
   let color = "red";
   let label = "Very Weak";
 
@@ -181,7 +181,7 @@
   const userPref = localStorage.getItem("theme");
   const systemPrefDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  // Set initial theme based on user or system
+  // Set initial theme based on user system
   if (userPref) {
     document.documentElement.setAttribute("data-theme", userPref);
   } else if (systemPrefDark) {
@@ -214,3 +214,4 @@
     }
   }
 });
+
