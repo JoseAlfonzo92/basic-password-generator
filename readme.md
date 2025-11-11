@@ -69,13 +69,12 @@ The app is multilingual (English and Spanish) and adapts seamlessly to different
 - **HTML5** for semantic structure  
 - **CSS3** for styling and responsive layout (includes hover animations and landscape media query)  
 - **JavaScript (ES6)** for password generation logic and clipboard functionality  
-- **Font Awesome** for icons used in UI and hover animations
 
 ---
 
 ## Developer
 
-**Developed by:** [José Alfonzo]  
+**Developed by:** José Alfonzo  
 Hover over the developer link in the footer to see the interactive icon animation.
 
 ---
@@ -83,5 +82,6 @@ Hover over the developer link in the footer to see the interactive icon animatio
 ## License
 
 This project is open source and available under the **MIT License**.
+
 
 
