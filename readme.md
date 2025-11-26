@@ -1,4 +1,4 @@
-# 🔐 Password Generator
+# Password Generator
 
 ## Overview
 
@@ -75,13 +75,14 @@ It’s fully bilingual (**English/Spanish**) and adapts smoothly to different de
 ## Developer
 
 Made with care by **José Alfonzo**  
-👉 Hover over the footer link to see the interactive icon animation.
+Hover over the footer link to see the interactive icon animation.
 
 ---
 
 ## License
 
 Released under the **MIT License** — free to use, modify, and share.
+
 
 
 
